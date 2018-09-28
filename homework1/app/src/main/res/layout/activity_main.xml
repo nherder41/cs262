@@ -11,49 +11,50 @@
         android:id="@+id/labelInput1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="29dp"
-        android:text="Value 1:"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="20dp" />
+        android:text="Value 1:" />
 
     <TextView
         android:id="@+id/labelInput2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/labelInput1"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/labelInput1"
         android:layout_marginTop="88dp"
-        android:text="Value 2:"
-        android:layout_alignLeft="@+id/labelInput1" />
+        android:text="Value 2:" />
 
     <EditText
         android:id="@+id/input1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:inputType="numberSigned"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="70dp" />
+        android:inputType="numberSigned" />
 
     <EditText
         android:id="@+id/input2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/input1"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/input1"
         android:layout_marginTop="73dp"
         android:ems="10"
-        android:inputType="numberSigned"
-        android:layout_alignLeft="@+id/input1" />
+        android:inputType="numberSigned" />
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/input1"
@@ -85,8 +86,8 @@
 
         <RadioButton
             android:id="@+id/radioDivision"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/division" />
     </RadioGroup>
@@ -98,19 +99,21 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/labelInput1"
         android:layout_marginTop="174dp"
-        android:text="Calculate"
-        android:onClick="calculate"/>
+        android:onClick="calculate"
+        android:text="Calculate" />
 
     <TextView
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/calculateButton"
-        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="136dp"
+        android:layout_alignParentStart="true"
         android:layout_marginLeft="136dp"
-        android:visibility="invisible"
-        android:text="" />
+        android:layout_marginStart="136dp"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="32dp"
+        android:visibility="invisible" />
 
 </RelativeLayout>
