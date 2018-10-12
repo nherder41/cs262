@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/home/ndh7/Desktop/lab06/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_status_white.png",
+        "source": "/home/ndh7/Desktop/lab06/app/src/main/res/drawable-hdpi/ic_status_white.png"
+    },
+    {
+        "merged": "/home/ndh7/Desktop/lab06/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_fab_white.png",
+        "source": "/home/ndh7/Desktop/lab06/app/src/main/res/drawable-hdpi/ic_fab_white.png"
+    },
+    {
+        "merged": "/home/ndh7/Desktop/lab06/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_order_white.png",
+        "source": "/home/ndh7/Desktop/lab06/app/src/main/res/drawable-hdpi/ic_order_white.png"
+    },
+    {
+        "merged": "/home/ndh7/Desktop/lab06/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_map.png",
+        "source": "/home/ndh7/Desktop/lab06/app/src/main/res/drawable-hdpi/ic_map.png"
+    },
+    {
+        "merged": "/home/ndh7/Desktop/lab06/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_favorites_white.png",
+        "source": "/home/ndh7/Desktop/lab06/app/src/main/res/drawable-hdpi/ic_favorites_white.png"
+    }
+]

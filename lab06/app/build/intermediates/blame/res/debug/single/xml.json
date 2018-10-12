@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/ndh7/Desktop/lab06/app/build/intermediates/res/merged/debug/xml/pref_general.xml",
+        "source": "/home/ndh7/Desktop/lab06/app/src/main/res/xml/pref_general.xml"
+    },
+    {
+        "merged": "/home/ndh7/Desktop/lab06/app/build/intermediates/res/merged/debug/xml/pref_notification.xml",
+        "source": "/home/ndh7/Desktop/lab06/app/src/main/res/xml/pref_notification.xml"
+    },
+    {
+        "merged": "/home/ndh7/Desktop/lab06/app/build/intermediates/res/merged/debug/xml/pref_headers.xml",
+        "source": "/home/ndh7/Desktop/lab06/app/src/main/res/xml/pref_headers.xml"
+    },
+    {
+        "merged": "/home/ndh7/Desktop/lab06/app/build/intermediates/res/merged/debug/xml/pref_data_sync.xml",
+        "source": "/home/ndh7/Desktop/lab06/app/src/main/res/xml/pref_data_sync.xml"
+    }
+]
