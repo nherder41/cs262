@@ -9,10 +9,12 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             queryBundle.putString("queryInput", input);
             getSupportLoaderManager().restartLoader(0, queryBundle,this);
         } else {
-            resultText.setText("check your network connection...");
+
         }
     }
 
@@ -73,9 +75,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             JSONObject jsonObject = new JSONObject(data);
             //get array of the JSON items
             JSONArray itemsArraay = jsonObject.getJSONArray("items");
+            String concatenatedResults = "";
 
             for (int i = 0; i < itemsArraay.length(); i++) {
-                String concatenatedResults = null;
                 String player = null;
                 String email = null;
                 String id = null;
@@ -97,9 +99,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     e.printStackTrace();
                 }
 
-                concatenatedResults = id + ", " + player + ", " + email;
-                resultText.setText(concatenatedResults);
+                concatenatedResults += id + ", " + player + ", " + email + "\n";
             }
+            resultText.setText(concatenatedResults);
 
         } catch (JSONException e) {
             resultText.setText(R.string.no_results);
