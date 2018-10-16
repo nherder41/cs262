@@ -63,9 +63,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @NonNull
     @Override
     public Loader<String> onCreateLoader(int i, @Nullable Bundle args) {
-//        if(getSupportLoaderManager().getLoader(0)!=null){
-//            getSupportLoaderManager().initLoader(0,null,this);
-//        }
         return new playerLoader(this, args.getString("queryInput"));
     }
 
@@ -77,10 +74,32 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             //get array of the JSON items
             JSONArray itemsArraay = jsonObject.getJSONArray("items");
 
-            String player = null;
-            String email = null;
+            for (int i = 0; i < itemsArraay.length(); i++) {
+                String concatenatedResults = null;
+                String player = null;
+                String email = null;
+                String id = null;
+                JSONObject playerInfo = itemsArraay.getJSONObject(i);
 
-            resultText.setText("we got this far!");
+                try {
+                    player = playerInfo.getString("name");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    player = "no name";
+                } try {
+                    email = playerInfo.getString("emailAddress");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    email = "no contact email...";
+                } try {
+                    id = playerInfo.getString("id");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                concatenatedResults = id + ", " + player + ", " + email;
+                resultText.setText(concatenatedResults);
+            }
 
         } catch (JSONException e) {
             resultText.setText(R.string.no_results);

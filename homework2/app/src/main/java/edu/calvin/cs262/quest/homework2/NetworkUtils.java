@@ -1,7 +1,12 @@
 package edu.calvin.cs262.quest.homework2;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -75,7 +80,29 @@ public class NetworkUtils {
                 }
             }
             Log.d(LOG_TAG, resultJSONString);
-            return resultJSONString;
+
+            /*
+            return the full list if no query was specified.  Otherwise only return the JSON object
+               with the id that the user is looking for information on.
+            */
+            if (queryString == "") {
+                return resultJSONString;
+            }
+            try {
+                JSONObject jsonObject = new JSONObject(resultJSONString);
+                //get array of the JSON items
+                JSONArray itemsArraay = jsonObject.getJSONArray("items");
+
+                for (int i = 0; i < itemsArraay.length(); i++) {
+                    JSONObject playerInfo = itemsArraay.getJSONObject(i);
+                    if (playerInfo.getInt("id") == Integer.parseInt(queryString)) {
+                        return "{ " + "\"items\": " + "[ " + playerInfo.toString() + " ] " + " }";
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 }

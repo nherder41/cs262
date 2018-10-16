@@ -38,7 +38,7 @@
         android:layout_marginLeft="@dimen/standard_margin"
         android:layout_marginStart="@dimen/standard_margin"
         android:layout_marginTop="8dp"
-        android:text="hello there"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userInput" />
 
