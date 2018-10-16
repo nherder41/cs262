@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.AsyncTaskLoader;
 
-public class playerLoader extends AsyncTaskLoader {
+public class playerLoader extends AsyncTaskLoader<String> {
 
     private String playerQuery;
 
@@ -16,7 +16,7 @@ public class playerLoader extends AsyncTaskLoader {
 
     @Nullable
     @Override
-    public Object loadInBackground() {
+    public String loadInBackground() {
         return NetworkUtils.getPlayerInfo(playerQuery);
     }
 

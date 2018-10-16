@@ -14,6 +14,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
 
     private EditText userInput;
@@ -30,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     public void fetchPlayer(View view) {
 
-        userInput.setText(R.string.loading);
+        resultText.setText(R.string.loading);
         String input = userInput.getText().toString();
 
         //Hide the keyboard so the user knows the search is taking place
@@ -45,10 +49,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
 
-        if (networkInfo != null && networkInfo.isConnected()) {
+        if ( networkInfo.isConnected() ) {
             Bundle queryBundle = new Bundle();
             queryBundle.putString("queryInput", input);
-            getSupportLoaderManager().restartLoader(0, queryBundle,this);       //MAY BE CAUSE OF ERROR LATER
+            getSupportLoaderManager().restartLoader(0, queryBundle,this);
         } else {
             resultText.setText("check your network connection...");
         }
@@ -59,20 +63,32 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @NonNull
     @Override
     public Loader<String> onCreateLoader(int i, @Nullable Bundle args) {
-        if(getSupportLoaderManager().getLoader(0)!=null){
-            getSupportLoaderManager().initLoader(0,null,this);
-        }
-
+//        if(getSupportLoaderManager().getLoader(0)!=null){
+//            getSupportLoaderManager().initLoader(0,null,this);
+//        }
         return new playerLoader(this, args.getString("queryInput"));
     }
 
     @Override
-    public void onLoadFinished(@NonNull Loader<String> loader, String s) {
-        //This is where I will parse the JSON for results https://google-developer-training.github.io/android-developer-fundamentals-course-practicals/en/Unit%203/72_p_asynctask_asynctaskloader.html#task1intro
+    public void onLoadFinished(@NonNull Loader<String> loader, String data) {
+        // Convert the response into a JSON object.
+        try {
+            JSONObject jsonObject = new JSONObject(data);
+            //get array of the JSON items
+            JSONArray itemsArraay = jsonObject.getJSONArray("items");
+
+            String player = null;
+            String email = null;
+
+            resultText.setText("we got this far!");
+
+        } catch (JSONException e) {
+            resultText.setText(R.string.no_results);
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void onLoaderReset(@NonNull Loader<String> loader) {
+    public void onLoaderReset(Loader<String> loader) {}
 
-    }
 }

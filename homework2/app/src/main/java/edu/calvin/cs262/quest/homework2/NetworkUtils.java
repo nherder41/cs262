@@ -14,14 +14,14 @@ public class NetworkUtils {
 
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
 
+    private static final String MONOPOLY_BASE_URL =  "https://calvincs262-monopoly.appspot.com/monopoly/v1/players"; //Monopoly API
+    private static final String QUERY_PARAM = "q"; // Parameter for the search string
+
     static String getPlayerInfo(String queryString){
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String resultJSONString = null;
-
-        private static final String MONOPOLY_BASE_URL =  "https://calvincs262-monopoly.appspot.com/monopoly/v1"; //Monopoly API
-        private static final String QUERY_PARAM = "q"; // Parameter for the search string
 
         try {
 
@@ -43,7 +43,9 @@ public class NetworkUtils {
                 // Nothing to do.
                 return null;
             }
+
             reader = new BufferedReader(new InputStreamReader(inputStream));
+
             String line;
             while ((line = reader.readLine()) != null) {
                 buffer.append(line + "\n");
@@ -72,11 +74,8 @@ public class NetworkUtils {
                     e.printStackTrace();
                 }
             }
-
+            Log.d(LOG_TAG, resultJSONString);
+            return resultJSONString;
         }
-
-        Log.d(LOG_TAG, resultJSONString);
-        return resultJSONString;
     }
-
 }
