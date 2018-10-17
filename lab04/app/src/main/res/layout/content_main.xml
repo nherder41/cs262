@@ -12,9 +12,9 @@
         android:id="@+id/textintro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="@dimen/padding_regular"
         android:text="@string/intro_text"
-        android:textSize="@dimen/text_heading"
-        android:padding="@dimen/padding_regular"/>
+        android:textSize="@dimen/text_heading" />
 
     <TextView
         android:id="@+id/choose_dessert"

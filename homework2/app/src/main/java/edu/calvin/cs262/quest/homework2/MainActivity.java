@@ -2,6 +2,7 @@ package edu.calvin.cs262.quest.homework2;
 
 import android.app.ActionBar;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -56,17 +57,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_order:
-                displayToast("test1");
-                return true;
-            case R.id.action_status:
-                displayToast("test2");
-                return true;
-            case R.id.action_favorites:
-                displayToast("test3");
-                return true;
-            case R.id.action_contact:
-                displayToast("test4");
+            case R.id.action_settings:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 // Do nothing
@@ -75,11 +68,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
 
-
     public void displayToast(String message) {
         Toast.makeText(getApplicationContext(), message,
                 Toast.LENGTH_SHORT).show();
     }
+
 
     public void fetchPlayer(View view) {
 
