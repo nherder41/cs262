@@ -1,6 +1,9 @@
 package edu.calvin.cs262.quest.homework2;
 
+import android.app.ActionBar;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
@@ -11,8 +14,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -35,14 +40,46 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         userInput = findViewById(R.id.userInput);
         resultText = findViewById(R.id.resultsTextView);
-        Toast toast = Toast.makeText(getApplicationContext(), "BAD CONNECTION", Toast.LENGTH_SHORT);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_order:
+                displayToast("test1");
+                return true;
+            case R.id.action_status:
+                displayToast("test2");
+                return true;
+            case R.id.action_favorites:
+                displayToast("test3");
+                return true;
+            case R.id.action_contact:
+                displayToast("test4");
+                return true;
+            default:
+                // Do nothing
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 
     public void displayToast(String message) {
         Toast.makeText(getApplicationContext(), message,
                 Toast.LENGTH_SHORT).show();
     }
-
 
     public void fetchPlayer(View view) {
 
