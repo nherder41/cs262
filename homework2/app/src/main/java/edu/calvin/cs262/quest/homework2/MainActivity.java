@@ -9,7 +9,9 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private EditText userInput;
     private TextView resultText;
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         userInput = findViewById(R.id.userInput);
         resultText = findViewById(R.id.resultsTextView);
+        Toast toast = Toast.makeText(getApplicationContext(), "BAD CONNECTION", Toast.LENGTH_SHORT);
     }
+
+    public void displayToast(String message) {
+        Toast.makeText(getApplicationContext(), message,
+                Toast.LENGTH_SHORT).show();
+    }
+
 
     public void fetchPlayer(View view) {
 
@@ -50,13 +60,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
-
-        if ( networkInfo.isConnected() ) {
-            Bundle queryBundle = new Bundle();
-            queryBundle.putString("queryInput", input);
-            getSupportLoaderManager().restartLoader(0, queryBundle,this);
-        } else {
-
+        try {
+            if ( networkInfo.isConnected() ) {
+                Bundle queryBundle = new Bundle();
+                queryBundle.putString("queryInput", input);
+                getSupportLoaderManager().restartLoader(0, queryBundle,this);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            toast.show();
         }
     }
 

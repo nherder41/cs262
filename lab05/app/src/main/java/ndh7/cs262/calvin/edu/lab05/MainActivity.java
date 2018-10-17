@@ -139,8 +139,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             bookAuthor.setText("");
             e.printStackTrace();
         }
-
-
     }
 
     /**

@@ -46,7 +46,7 @@ class NetworkUtils {
             urlConnection.connect();
 
             // Get the InputStream.
-            InputStream inputStream = urlConnection.getInputStream();
+                    InputStream inputStream = urlConnection.getInputStream();
 
             // Read the response string into a StringBuilder.
             StringBuilder builder = new StringBuilder();

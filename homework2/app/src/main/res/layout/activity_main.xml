@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/standard_margin"
         android:layout_marginStart="@dimen/standard_margin"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="numberSigned"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
         android:id="@+id/button"
@@ -25,11 +25,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="fetchPlayer"
         android:text="@string/reply_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/userInput"
-        tools:layout_editor_absoluteY="12dp" />
+        app:layout_constraintStart_toEndOf="@+id/userInput" />
 
     <TextView
         android:id="@+id/resultsTextView"

@@ -1,5 +1,6 @@
 package edu.calvin.cs262.quest.homework2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
@@ -19,8 +20,8 @@ import java.net.URL;
 public class NetworkUtils {
 
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
-
     private static final String MONOPOLY_BASE_URL =  "https://calvincs262-monopoly.appspot.com/monopoly/v1/players"; //Monopoly API
+
 
     static String getPlayerInfo(String queryString){
 
