@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private EditText userInput;
     private TextView resultText;
-    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,20 +84,21 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
 
-        //check for a network connection
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-
         try {
+            //check for a network connection
+            ConnectivityManager connMgr = (ConnectivityManager)
+                    getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+
             if ( networkInfo.isConnected() ) {
                 Bundle queryBundle = new Bundle();
                 queryBundle.putString("queryInput", input);
                 getSupportLoaderManager().restartLoader(0, queryBundle,this);
             }
         } catch (Exception e) {
+            resultText.setText("");
+            displayToast("No Connection");
             e.printStackTrace();
-            toast.show();
         }
     }
 
@@ -107,7 +107,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @NonNull
     @Override
     public Loader<String> onCreateLoader(int i, @Nullable Bundle args) {
-        return new playerLoader(this, args.getString("queryInput"));
+        try {
+            return new playerLoader(this, args.getString("queryInput"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            displayToast("Invalid ID");
+            return null;
+        }
+
     }
 
     @Override
@@ -145,8 +152,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
             resultText.setText(concatenatedResults);
 
-        } catch (JSONException e) {
-            resultText.setText(R.string.no_results);
+        } catch (Exception e) {
+            resultText.setText("");
+            displayToast("Invalid ID");
             e.printStackTrace();
         }
     }
