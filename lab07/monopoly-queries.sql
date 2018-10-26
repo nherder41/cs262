@@ -25,3 +25,5 @@ ORDER BY score DESC
 SELECT *
   FROM Player, PlayerGame, Game
   ;
+
+

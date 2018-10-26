@@ -25,7 +25,8 @@ CREATE TABLE Player (
 
 CREATE TABLE PlayerGame (
 	gameID integer REFERENCES Game(ID),
-	playerID integer REFERENCES Player(ID)
+	playerID integer REFERENCES Player(ID),
+	score integer
 	);
 
 CREATE TABLE PlayerGameState (
@@ -53,25 +54,26 @@ GRANT SELECT ON PlayerProp TO PUBLIC;
 INSERT INTO Game VALUES (1, '2006-06-27 08:00:00');
 INSERT INTO Game VALUES (2, '2006-06-28 13:20:00');
 INSERT INTO Game VALUES (3, '2006-06-29 18:41:00');
+INSERT INTO Game VALUES (4, '2018-10-21 06:13:00');
 
-INSERT INTO Player(ID, emailAddress) VALUES (1, 'nateherder@gmail.com');
-INSERT INTO Player VALUES (2, 'ripElvis@gmail.edu', 'Elvis Presely');
-INSERT INTO Player VALUES (3, 'mj@gmail.edu', 'Michael Jackson');
+INSERT INTO Player(ID, emailAddress) VALUES (1, 'me@calvin.edu');
+INSERT INTO Player VALUES (2, 'king@gmail.edu', 'The King');
+INSERT INTO Player VALUES (3, 'dog@gmail.edu', 'Dogbreath');
 
-INSERT INTO PlayerGame VALUES (1, 1);
-INSERT INTO PlayerGame VALUES (1, 2);
-INSERT INTO PlayerGame VALUES (1, 3);
-INSERT INTO PlayerGame VALUES (2, 1);
-INSERT INTO PlayerGame VALUES (2, 2);
-INSERT INTO PlayerGame VALUES (2, 3);
-INSERT INTO PlayerGame VALUES (3, 2);
-INSERT INTO PlayerGame VALUES (3, 3);
+INSERT INTO PlayerGame VALUES (1, 1, 2200);
+INSERT INTO PlayerGame VALUES (1, 2, 1600);
+INSERT INTO PlayerGame VALUES (1, 3, 2150);
+INSERT INTO PlayerGame VALUES (2, 1, 2600);
+INSERT INTO PlayerGame VALUES (2, 2, 2450);
+INSERT INTO PlayerGame VALUES (2, 3, 2900);
+INSERT INTO PlayerGame VALUES (3, 2, 4000);
+INSERT INTO PlayerGame VALUES (3, 3, 760);
 
 -- Add sample active game records
-INSERT INTO PlayerGameState VALUES (4, 1, 100, 30);
-INSERT INTO PlayerGameState VALUES (4, 2, 30, 2);
+INSERT INTO PlayerGameState VALUES (3, 1, 100, 30);
+INSERT INTO PlayerGameState VALUES (3, 2, 30, 2);
 
 -- Add properties for active games
-INSERT INTO PlayerProp VALUES (4, 1, 21, 3);
-INSERT INTO PlayerProp VALUES (4, 1, 18, 2);
-INSERT INTO PlayerProp VALUES (4, 2, 4, 5);
+INSERT INTO PlayerProp VALUES (3, 1, 21, 3);
+INSERT INTO PlayerProp VALUES (3, 1, 18, 2);
+INSERT INTO PlayerProp VALUES (3, 2, 4, 5);
