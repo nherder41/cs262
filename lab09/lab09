@@ -1,0 +1,17 @@
+9.1 a. There are two API end points:
+		https://calvincs262-monopoly.appspot.com/monopoly/v1/players
+		https://calvincs262-monopoly.appspot.com/monopoly/v1/player/1
+	the end points are located in the PlayerResource class within the given java files.  The second endpoint can be used many in 		different ways using the id of a specific player, but I consider this one endpoint. 
+
+
+    b.i This uses JDBC to access data from the database about the monopoly players.
+
+    b.ii.1  SQL statements references a relation within a database, while the JDBC statements only know about the end points and the 		  the player objects.
+
+    b.ii.2  SQL relations contains the relationships of the tables and properties of the tables in your database.  The JDBC result 		    sets contain the JSON results of the queries from the database.  List<Player> is a java list that contains the properties 		    of a player object.     
+
+    b.iii  getValueStringOrNull() is used to handle the case when the database returns a null value, there is no result from the 		   query, or a string is returned.  
+
+    C.i  The purpose of the Player DAO serves to contain a player object and methods to update and return player properties.
+
+    C.ii  This is very similar to the Player table that we created in the SQL schema, yet there are some differences.  Both define a 		  player and the properties that make one: id, email, and name.  The java implementation is the code version, and the SQL 	    implementation is the database version which defines what information the player table will hold.  In the SQL table there 	      will be a player per row.   
