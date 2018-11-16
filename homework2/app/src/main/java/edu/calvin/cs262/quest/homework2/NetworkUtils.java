@@ -23,6 +23,15 @@ public class NetworkUtils {
     private static final String MONOPOLY_BASE_URL =  "https://calvincs262-monopoly.appspot.com/monopoly/v1/players"; //Monopoly API
 
 
+    /**
+     * This method implements the HTTP 'GET' request to the Monopoly API and returns the resulting
+     * player JSON player data.
+     *
+     * @author Nate Herder
+     *
+     * @param queryString
+     * @return JSON string containing monopoly player object or objects
+     */
     static String getPlayerInfo(String queryString){
 
         HttpURLConnection urlConnection = null;

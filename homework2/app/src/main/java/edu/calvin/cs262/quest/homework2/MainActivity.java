@@ -33,6 +33,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private EditText userInput;
     private TextView resultText;
 
+    /**
+     * @author Nate Herder
+     * @version 1.0
+     * @since 10-2018 Calvin College CS262
+     *
+     * This application interfaces with the Monopoly database setup by Professor VanderLinden for
+     * CS262.  The application makes HTTP get requests to the database either for specific players
+     * or all players.  The data is returned from the Monopoly API in JSON format and displays the
+     * results in the application layed out nicely.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,27 +78,36 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         return super.onOptionsItemSelected(item);
     }
 
-
+    /**
+     * This methods makes making taosts easy
+     * @param message text to toast
+     */
     public void displayToast(String message) {
         Toast.makeText(getApplicationContext(), message,
                 Toast.LENGTH_SHORT).show();
     }
 
-
+    /**
+     * This method is called when the Reply button is pressed.  This is method is essentially
+     * the driver for the application which holds the main logic and function calls that allow
+     * the app to work.
+     *
+     * @param view the current view within the app
+     * @return void nothing is returned
+     */
     public void fetchPlayer(View view) {
 
         resultText.setText(R.string.loading);
         String input = userInput.getText().toString();
 
-        //Hide the keyboard so the user knows the search is taking place
+        // hide the keyboard so the user knows the search is taking place
         InputMethodManager inputManager = (InputMethodManager)
                 getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
 
         try {
-            //check for a network connection
-            ConnectivityManager connMgr = (ConnectivityManager)
+            ConnectivityManager connMgr = (ConnectivityManager) // check for a network connection
                     getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
@@ -117,7 +138,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     }
 
-    @Override
+    /**
+     * This method is called once the Monopoly is received and then updates the UI textViews in
+     * the main activity of the application.
+     *
+     * @author Nate Herder
+     *
+     * @param loader a loader for a player object
+     * @param data the data received from the Monopoly HTTP 'GET' request
+     * @return void, nothing is returned
+     */
     public void onLoadFinished(@NonNull Loader<String> loader, String data) {
         // Convert the response into a JSON object.
         try {
