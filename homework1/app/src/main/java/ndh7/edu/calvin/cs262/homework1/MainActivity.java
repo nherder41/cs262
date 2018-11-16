@@ -14,7 +14,11 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
-//Custom error exception to handle divide by zero errors
+
+/**
+ * This is a custom exception to handle the divide by zero case within the calculator
+ * This is a subclass of the Java Exception class.
+ */
 class DivideByZeroException extends Exception
 {
     public DivideByZeroException(String s)
@@ -30,6 +34,17 @@ public class MainActivity extends AppCompatActivity {
     private EditText input2EditText;
     private TextView resultTextView;
 
+    /**
+     * @author Nate Herder
+     * @version 1.0
+     * @since 10/2018 Calvin College CS262
+     *
+     * When the main activity is created, get variables with values of
+     * main views in the applicatio so that their values can be received
+     * and data can be passed to them programmatically.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +55,18 @@ public class MainActivity extends AppCompatActivity {
         resultTextView = (TextView) findViewById(R.id.result);
     }
 
+    /**
+     * @author Nate Herder
+     *
+     * This is the method called when the calculate button of the application of pressed.
+     * This method checks the operands of the textViews for valid input, makes sure that one
+     * of the radio buttons is selected.  If everything is as expected the operator (+, -, /, *)
+     * is applied to the two input operands.
+     *
+     * @param view the view of the
+     * @return nothing, void method.
+     * @throws DivideByZeroException on attempt to divide by zero
+     */
     public void calculate(View view) {
         RadioButton rb1 = (RadioButton) findViewById(R.id.radioAddition);
         RadioButton rb2 = (RadioButton) findViewById(R.id.radioSubtraction);
@@ -50,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         String input2 = input2EditText.getText().toString();
         Integer calculation = null;
 
-        //if no radio buttons are clicked, then don't do anything
+        // this if statement ensures that one of the radio buttons is selected
         if (rGroup.getCheckedRadioButtonId() != -1) {
             resultTextView.setVisibility(View.VISIBLE);
             try {
